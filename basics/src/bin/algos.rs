@@ -1,36 +1,58 @@
-// fn main() {
-//     //  1. Problem 1
-//     println!("!!! Algo Problems !!!");
-//     let vec_nums: Vec<u32> = vec![1, 3, 4, 2, 10];
-//     let num_stats: NumberStats = count_numbers(&vec_nums);
-//     println!("Number Stats  : {:#?}", &num_stats);
-//     // 2. Problem 2
-//     let mut v1 = VendingMachine {
-//         item_count: 100,
-//         item_price: 10,
-//     };
+fn main() {
+    //  1. Problem 1
+    println!("!!! Algo Problems !!!");
+    let vec_nums: Vec<u32> = vec![1, 3, 4, 2, 10];
+    let num_stats: NumberStats = count_numbers(&vec_nums);
+    println!("Number Stats  : {:#?}", &num_stats);
+    // 2. Problem 2
+    let mut v1 = VendingMachine {
+        item_count: 100,
+        item_price: 10,
+    };
 
-//     let failed_underpaid_purchase = v1.purchase(2, 5);
-//     let result1 = match failed_underpaid_purchase {
-//         PurchaseStatus::Failure(reason) => reason,
-//         PurchaseStatus::Success(change) => change.to_string(),
-//     };
-//     println!("Less pay : {:?}", result1);
+    let failed_underpaid_purchase = v1.purchase(2, 5);
+    let result1 = match failed_underpaid_purchase {
+        PurchaseStatus::Failure(reason) => reason,
+        PurchaseStatus::Success(change) => change.to_string(),
+    };
+    println!("Less pay : {:?}", result1);
 
-//     let failed_overquantity_purchase = v1.purchase(120, 120);
-//     let result1 = match failed_overquantity_purchase {
-//         PurchaseStatus::Failure(reason) => reason,
-//         PurchaseStatus::Success(change) => change.to_string(),
-//     };
-//     println!("More Quantity : {:?}", result1);
+    let failed_overquantity_purchase = v1.purchase(120, 120);
+    let result1 = match failed_overquantity_purchase {
+        PurchaseStatus::Failure(reason) => reason,
+        PurchaseStatus::Success(change) => change.to_string(),
+    };
+    println!("More Quantity : {:?}", result1);
 
-//     let success_purchase = v1.purchase(2, 80);
-//     let result1 = match success_purchase {
-//         PurchaseStatus::Failure(reason) => reason,
-//         PurchaseStatus::Success(change) => change.to_string(),
-//     };
-//     println!("Success Purchase : {:?}", result1);
-// }
+    let success_purchase = v1.purchase(2, 80);
+    let result1 = match success_purchase {
+        PurchaseStatus::Failure(reason) => reason,
+        PurchaseStatus::Success(change) => change.to_string(),
+    };
+    println!("Success Purchase : {:?}", result1);
+
+    // 3. Problem 3
+    let vec1 = vec![2, 4, 5, 7, 8];
+    let vec2 = vec![1, 3, 7, 11];
+
+    let result1 = find_first_even_number(&vec1);
+    match result1 {
+        Some(n) => println!("Found Even Number in vector : {}", n),
+        None => println!("Even Number Not found in vector"),
+    }
+    let result2 = find_first_even_number(&vec2);
+    match result2 {
+        Some(n) => println!("Found Even Number in vector : {}", n),
+        None => println!("Even Number Not found in vector"),
+    }
+
+    println!("-----------------------");
+
+    // 4. Program 4
+
+    let fib = fibonacci(10);
+    println!("fib : {} ", fib);
+}
 
 // 1. The Number Count
 
@@ -88,22 +110,6 @@ impl VendingMachine {
 
 // 3. Find the first of its Kind
 
-fn main() {
-    let vec1 = vec![2, 4, 5, 7, 8];
-    let vec2 = vec![1, 3, 7, 11];
-
-    let result1 = find_first_even_number(&vec1);
-    match result1 {
-        Some(n) => println!("Found Even Number in vector : {}", n),
-        None => println!("Even Number Not found in vector"),
-    }
-    let result2 = find_first_even_number(&vec2);
-    match result2 {
-        Some(n) => println!("Found Even Number in vector : {}", n),
-        None => println!("Even Number Not found in vector"),
-    }
-}
-
 fn find_first_even_number(nums: &[i32]) -> Option<i32> {
     for n in nums {
         if n % 2 == 0 {
@@ -112,4 +118,26 @@ fn find_first_even_number(nums: &[i32]) -> Option<i32> {
     }
 
     return None;
+}
+
+// 4. Fibonacci Program
+fn fibonacci(num: u32) -> u32 {
+    let mut first = 0;
+    let mut second = 1;
+
+    if num == 0 {
+        return first;
+    }
+
+    if num == 1 {
+        return 1;
+    }
+
+    for _ in 0..(num - 2) {
+        let temp = second;
+        second = second + first;
+        first = temp;
+    }
+
+    return second;
 }
