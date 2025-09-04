@@ -44,7 +44,7 @@ impl Kid {
         } else {
             nice_enum = Niceness::Naughty;
         }
- 
+
         // Return a Kid instance
         return Kid {
             name: name,
