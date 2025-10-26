@@ -9,7 +9,7 @@ fn main() {
         item_count: 100,
         item_price: 10,
     };
-
+// 
     let failed_underpaid_purchase = v1.purchase(2, 5);
     let result1 = match failed_underpaid_purchase {
         PurchaseStatus::Failure(reason) => reason,
