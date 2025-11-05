@@ -48,7 +48,6 @@ fn main() {
     let user1: User = User { name: "Saad".to_string(), age: 21 };
 
     let user1_age = user1.guess_height();
-    
 
     println!("user1 name : {} age : {}", user1.name, user1.age);
     println!("user1 height : {:?}", match user1_age {
